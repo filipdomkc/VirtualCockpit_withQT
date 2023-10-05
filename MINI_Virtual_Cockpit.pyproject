@@ -1,0 +1,9 @@
+{
+    "files": [
+        "main.py",
+        "qml/components/Driving_Mode_Graphic.qml",
+        "qml/components/Frame.qml",
+        "qml/components/RPM_Gauge.qml",
+        "qml/components/Speed_Gauge.qml"
+    ]
+}
