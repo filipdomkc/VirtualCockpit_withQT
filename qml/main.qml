@@ -64,7 +64,7 @@ Window {
                     centerX: progress.width / 2
                     centerY: progress.height / 2
                     startAngle: 90
-                    sweepAngle: 240
+                    sweepAngle: currSpeed
                 }
             }
         }

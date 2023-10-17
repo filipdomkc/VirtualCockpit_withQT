@@ -31,7 +31,6 @@ class Backend(QObject):
     def update_speed(self):
         # Pass the current speed to QML.
         curr_speed = random.randint(0, 240)
-        print(type(curr_speed))
         self.updatedSpeed.emit(curr_speed)
 
 if __name__ == "__main__":
