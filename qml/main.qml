@@ -3,14 +3,20 @@ import QtQuick.Window
 import QtQuick.Controls 2.15
 import QtQuick.Shapes 2.15
 import "components"
-import QtQuick.Studio.Effects 2.0
 
 Window {
     width: 1280
     height: 720
+    maximumHeight : 720
+    maximumWidth : 1280
+    minimumHeight : 720
+    minimumWidth : 1280
     visible: true
     color: "#000000"
     title: qsTr("MINI Coooper SD F56 Virtual Cockpit")
+
+    property string currTime: "00:00:00"
+    property QtObject backend
 
     Item {
         id: progress
@@ -129,6 +135,47 @@ Window {
 
     Speed_Gauge { x: 48;y: 157}
 
+    Connections {
+        target: rpmgauge // Replace 'RPMGauge' with the actual identifier of your Python RPMGauge object
+        onRpmValueChanged: {
+            // Handle the RPM value change here
+            // You can access 'value' which contains the new RPM value
+            // For example, you can assign it to the RPM_Gauge item
+            progress.rpmValue = value;
+        }
+    }
 
+    Rectangle {
+        anchors.fill: parent
+        anchors.rightMargin: -434
+        anchors.bottomMargin: 110
+        anchors.leftMargin: 434
+        anchors.topMargin: -110
+        color: "transparent"
+
+
+        Text {
+            anchors {
+                bottom: parent.bottom
+                bottomMargin: 12
+                left: parent.left
+                leftMargin: 12
+            }
+            text: currTime  // used to be; text: "16:38:33"
+            font.styleName: "Bold"
+            font.family: "BMW Helvetica 75"
+            font.pixelSize: 24
+            color: "white"
+        }
+
+    }
+
+    Connections {
+        target: backend
+
+        function onUpdated(msg) {
+            currTime = msg;
+        }
+    }
 
 }

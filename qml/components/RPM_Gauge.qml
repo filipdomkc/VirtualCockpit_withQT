@@ -5,6 +5,8 @@ Item {
     width: 379
     height: 404
 
+    property int rpmValue: 0
+
     Text {
         id: gadget
         x: 105
@@ -12,7 +14,7 @@ Item {
         width: 130
         height: 59
         color: "#FFFFFF"
-        text: qsTr("850")
+        text: qsTr(rpmValue.toString())
         font.pixelSize: 56
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
