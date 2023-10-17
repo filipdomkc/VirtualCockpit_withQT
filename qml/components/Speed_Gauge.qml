@@ -1,9 +1,11 @@
 import QtQuick 2.15
+import QtQuick.Timeline 1.0
 
 Item {
     id: speedometer
     width: 457
     height: 407
+    property string currTime: currTime
 
     Text {
         id: km_h
@@ -41,7 +43,7 @@ Item {
         height: 26
         color: "#FFFFFF"
         text: qsTr("30")
-        font.pixelSize: 25
+        font.pixelSize: 37
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
         font.family: "BMW Helvetica 75"
@@ -65,11 +67,11 @@ Item {
         id: gadget3
         x: -1
         y: 175
-        width: 60
+        width: 41
         height: 38
-        color: "#FFFF00"
+        color: "#ffffff"
         text: qsTr("90")
-        font.pixelSize: 37
+        font.pixelSize: 25
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
         font.family: "BMW Helvetica 75"
@@ -152,10 +154,12 @@ Item {
         width: 86
         height: 59
         color: "#FFFFFF"
-        text: qsTr("90")
+        text: currTime
         font.pixelSize: 56
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
         font.family: "BMW Helvetica 75"
     }
+
+
 }

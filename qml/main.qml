@@ -15,7 +15,8 @@ Window {
     color: "#000000"
     title: qsTr("MINI Coooper SD F56 Virtual Cockpit")
 
-    property string currTime: "00:00:00"
+    property string currTime: "00:00"
+    property string currSpeed: "0"
     property QtObject backend
 
     Item {
@@ -133,17 +134,7 @@ Window {
 
     RPM_Gauge { x: 800;y: 158}
 
-    Speed_Gauge { x: 48;y: 157}
-
-    Connections {
-        target: rpmgauge // Replace 'RPMGauge' with the actual identifier of your Python RPMGauge object
-        onRpmValueChanged: {
-            // Handle the RPM value change here
-            // You can access 'value' which contains the new RPM value
-            // For example, you can assign it to the RPM_Gauge item
-            progress.rpmValue = value;
-        }
-    }
+    Speed_Gauge { x: 48;y: 157; currTime: currTime}
 
     Rectangle {
         anchors.fill: parent
@@ -161,10 +152,36 @@ Window {
                 left: parent.left
                 leftMargin: 12
             }
-            text: currTime  // used to be; text: "16:38:33"
+            text: currTime
             font.styleName: "Bold"
             font.family: "BMW Helvetica 75"
             font.pixelSize: 24
+            color: "white"
+        }
+
+    }
+
+    Rectangle {
+        anchors.fill: parent
+        anchors.rightMargin: -434
+        anchors.bottomMargin: 110
+        anchors.leftMargin: 434
+        anchors.topMargin: -110
+        color: "transparent"
+
+
+        Text {
+            y: 436
+            anchors {
+                bottom: parent.bottom
+                bottomMargin: 221
+                left: parent.left
+                leftMargin: -164
+            }
+            text: currSpeed
+            font.styleName: "Bold"
+            font.family: "BMW Helvetica 75"
+            font.pixelSize: 50
             color: "white"
         }
 
@@ -175,6 +192,10 @@ Window {
 
         function onUpdated(msg) {
             currTime = msg;
+        }
+
+        function onUpdatedSpeed(msg2) {
+            currSpeed = msg2;
         }
     }
 
