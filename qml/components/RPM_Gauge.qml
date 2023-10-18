@@ -8,20 +8,6 @@ Item {
     property int rpmValue: 0
 
     Text {
-        id: gadget
-        x: 105
-        y: 165
-        width: 130
-        height: 59
-        color: "#FFFFFF"
-        text: qsTr(rpmValue.toString())
-        font.pixelSize: 56
-        horizontalAlignment: Text.AlignHCenter
-        font.styleName: "Bold"
-        font.family: "BMW Helvetica 75"
-    }
-
-    Text {
         id: rpm1
         x: 158
         y: 231

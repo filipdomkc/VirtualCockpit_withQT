@@ -17,6 +17,7 @@ Window {
 
     property string currTime: "00:00"
     property string currSpeed: "0"
+    property string currRpm: "0"
     property QtObject backend
 
     Item {
@@ -116,11 +117,30 @@ Window {
                     centerX: rpm_progress.width / 2
                     centerY: rpm_progress.height / 2
                     startAngle: 90
-                    sweepAngle: -240
+                    sweepAngle: -currRpm/33
                 }
             }
         }
     }
+
+    Image {
+        id: shade
+        x: 4
+        y: 76
+        width: 554
+        height: 554
+        source: "components/assets/shade.png"
+    }
+
+    Image {
+        id: shade2
+        x: 713
+        y: 83
+        width: 554
+        height: 554
+        source: "components/assets/shade.png"
+    }
+
 
     Frame {
         x: 0
@@ -129,7 +149,7 @@ Window {
 
     Driving_Mode_Graphic{
         x: 554
-        y: 315
+        y: 392
     }
 
     RPM_Gauge { x: 800;y: 158}
@@ -146,6 +166,7 @@ Window {
 
 
         Text {
+            id: time
             anchors {
                 bottom: parent.bottom
                 bottomMargin: 12
@@ -171,20 +192,200 @@ Window {
 
 
         Text {
+            id: speed
             y: 436
+            width: 106
+            height: 63
             anchors {
                 bottom: parent.bottom
                 bottomMargin: 221
                 left: parent.left
-                leftMargin: -164
+                leftMargin: -202
             }
             text: currSpeed
             font.styleName: "Bold"
             font.family: "BMW Helvetica 75"
             font.pixelSize: 50
+            horizontalAlignment: Text.AlignHCenter
             color: "white"
         }
+    }
 
+    Text {
+        id: currGear
+        x: 606
+        y: 231
+        text: qsTr("4")
+        font.styleName: "Bold"
+        font.family: "Digital-7"
+        font.pixelSize: 85
+        horizontalAlignment: Text.AlignHCenter
+        color: "white"
+    }
+
+    Text {
+        id: currGear1
+        x: 603
+        y: 312
+        color: "#ff0000"
+        text: qsTr("GEAR")
+        font.pixelSize: 15
+        font.family: "BMW Helvetica 75"
+        font.styleName: "Bold"
+    }
+
+    Text {
+        id: fuelLevel
+        x: 459
+        y: 543
+        color: "#ff0000"
+        text: qsTr("FUEL LEVEL")
+        font.pixelSize: 15
+        font.family: "BMW Helvetica 75"
+        font.styleName: "Bold"
+    }
+
+    Text {
+        id: percent
+        x: 526
+        y: 508
+        color: "#ffffff"
+        text: qsTr("%")
+        font.pixelSize: 20
+        font.family: "BMW Helvetica 75"
+        font.styleName: "Bold"
+    }
+
+    Text {
+        id: fuelLevelValue
+        x: 471
+        y: 489
+        color: "#ffffff"
+        text: qsTr("50")
+        font.pixelSize: 40
+        horizontalAlignment: Text.AlignHCenter
+        font.family: "BMW Helvetica 75"
+        font.styleName: "Bold"
+    }
+
+    Text {
+        id: rangeValue
+        x: 573
+        y: 489
+        color: "#ffffff"
+        text: qsTr("425")
+        font.pixelSize: 40
+        horizontalAlignment: Text.AlignHCenter
+        font.family: "BMW Helvetica 75"
+        font.styleName: "Bold"
+    }
+
+    Text {
+        id: engineTempValue
+        x: 692
+        y: 489
+        width: 71
+        height: 51
+        color: "#ffffff"
+        text: qsTr("59")
+        font.pixelSize: 40
+        horizontalAlignment: Text.AlignHCenter
+        font.family: "BMW Helvetica 75"
+        font.styleName: "Bold"
+    }
+
+    Text {
+        id: celsiusDegrees
+        x: 770
+        y: 508
+        color: "#ffffff"
+        text: qsTr("°C")
+        font.pixelSize: 20
+        horizontalAlignment: Text.AlignHCenter
+        font.family: "BMW Helvetica 75"
+        font.styleName: "Bold"
+    }
+
+    Text {
+        id: kilometers
+        x: 646
+        y: 508
+        color: "#ffffff"
+        text: qsTr("km")
+        font.pixelSize: 20
+        font.family: "BMW Helvetica 75"
+        font.styleName: "Bold"
+    }
+
+    Text {
+        id: range
+        x: 597
+        y: 543
+        color: "#ff0000"
+        text: qsTr("RANGE")
+        font.pixelSize: 15
+        font.family: "BMW Helvetica 75"
+        font.styleName: "Bold"
+    }
+
+    Text {
+        id: engineTemp
+        x: 687
+        y: 543
+        color: "#ff0000"
+        text: qsTr("ENGINE TEMP")
+        font.pixelSize: 15
+        font.family: "BMW Helvetica 75"
+        font.styleName: "Bold"
+    }
+
+    Text {
+        id: rpm
+        y: 329
+        width: 114
+        height: 63
+        anchors {
+            bottom: parent.bottom
+            bottomMargin: 328
+            left: parent.left
+            leftMargin: 920
+        }
+        text: currRpm
+        font.styleName: "Bold"
+        font.family: "BMW Helvetica 75"
+        font.pixelSize: 50
+        horizontalAlignment: Text.AlignHCenter
+        color: "white"
+    }
+
+    Text {
+        id: temperature
+        x: -9
+        y: 568
+        color: "#ffffff"
+        text: "21 °C"
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
+        font.pixelSize: 24
+        anchors.leftMargin: 593
+        anchors.bottomMargin: 121
+        font.family: "BMW Helvetica 75"
+        font.styleName: "Bold"
+    }
+
+    Text {
+        id: milage
+        x: -9
+        y: 568
+        color: "#ffffff"
+        text: "200658km"
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
+        font.pixelSize: 24
+        anchors.leftMargin: 687
+        anchors.bottomMargin: 121
+        font.family: "BMW Helvetica 75"
+        font.styleName: "Bold"
     }
 
     Connections {
@@ -194,8 +395,12 @@ Window {
             currTime = msg;
         }
 
-        function onUpdatedSpeed(msg2) {
-            currSpeed = msg2;
+        function onUpdatedSpeed(msg) {
+            currSpeed = msg;
+        }
+
+        function onUpdatedRpm(msg) {
+            currRpm = msg;
         }
     }
 
