@@ -18,6 +18,7 @@ Window {
     property string currTime: "00:00"
     property string currSpeed: "0"
     property string currRpm: "0"
+    property string currGear: "7"
     property QtObject backend
 
     Item {
@@ -212,10 +213,17 @@ Window {
     }
 
     Text {
-        id: currGear
+        id: currGearElement
         x: 606
         y: 231
-        text: qsTr("4")
+        text: {
+            if (currGear === "0")
+                return "R";
+            else if (currGear === "7")
+                return "N";
+            else
+                return currGear;
+        }
         font.styleName: "Bold"
         font.family: "Digital-7"
         font.pixelSize: 85
@@ -401,6 +409,10 @@ Window {
 
         function onUpdatedRpm(msg) {
             currRpm = msg;
+        }
+
+        function onUpdatedGear(msg) {
+            currGear = msg;
         }
     }
 

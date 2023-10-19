@@ -1,21 +1,30 @@
 # This Python file uses the following encoding: utf-8
 import sys
+import obd
+import random
 from pathlib import Path
 from time import strftime, localtime
-import random
-import obd
-from PySide6.QtCore import QTimer, QObject, Signal
+from gearCalculator import gearCalculator
 from PySide6.QtGui import QGuiApplication
 from PySide6.QtQml import QQmlApplicationEngine
+from PySide6.QtCore import QTimer, QObject, Signal
 
 class Backend(QObject):
 
     updated = Signal(str, arguments=['time'])
     updatedSpeed = Signal(int, arguments=['speed'])
     updatedRpm = Signal(int, arguments=['rpm'])
+    updatedGear = Signal(int, arguments=['gear'])
 
     def __init__(self):
         super().__init__()
+        self.curr_speed = 0
+        self.curr_rpm = 0
+        self.tire_circumference = 1.935
+        self.gear_ratios = [3.54, 3.92, 2.13, 1.27, 0.92, 0.75, 0.63]
+        self.final_drive = 3.39
+
+        self.gear = gearCalculator (self.tire_circumference, self.gear_ratios, self.final_drive, 3.54)
         """
         # Initialize the OBD connection
         self.obd_connection = obd.Async()
@@ -30,6 +39,7 @@ class Backend(QObject):
         self.timer.timeout.connect(self.update_time)
         self.timer.timeout.connect(self.update_speed)
         self.timer.timeout.connect(self.update_rpm)
+        self.timer.timeout.connect(self.update_current_gear)
         self.timer.start()
 
     def update_time(self):
@@ -40,20 +50,26 @@ class Backend(QObject):
     def update_speed(self,speed=None):
         if speed is None:
             # Pass the current speed to QML.
-            curr_speed = random.randint(0, 240) #mock data
+            self.curr_speed = random.randint(0, 240) #mock data
         else:
-            curr_speed = speed #data coming from obd connection
+            self.curr_speed = speed #data coming from obd connection
 
-        self.updatedSpeed.emit(curr_speed)
+        self.updatedSpeed.emit(self.curr_speed)
 
     def update_rpm(self, rpm = None):
         if rpm is None:
             # Pass the current speed to QML.
-            curr_rpm = random.randint(0, 8000)
+            self.curr_rpm = random.randint(0, 8000)
         else:
-            curr_rpm = rpm #data coming from obd connection
+            self.curr_rpm = rpm #data coming from obd connection
 
-        self.updatedRpm.emit(curr_rpm)
+        self.updatedRpm.emit(self.curr_rpm)
+
+    def update_current_gear(self):
+        self.gear.update_speed_rpm(self.curr_speed, self.curr_rpm)
+        self.curr_gear = self.gear.calculate_current_gear()
+        print(self.curr_gear)
+        self.updatedGear.emit(self.curr_gear)
 
 if __name__ == "__main__":
     app = QGuiApplication(sys.argv)
@@ -72,5 +88,6 @@ if __name__ == "__main__":
     backend.update_time()
     backend.update_speed()
     backend.update_rpm()
+    backend.update_current_gear()
 
     sys.exit(app.exec())
