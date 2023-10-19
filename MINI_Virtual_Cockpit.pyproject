@@ -1,5 +1,6 @@
 {
     "files": [
+        "gearCalculator.py",
         "main.py",
         "qml/components/Driving_Mode_Graphic.qml",
         "qml/components/Frame.qml",
