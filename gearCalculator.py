@@ -18,7 +18,7 @@ class gearCalculator:
         # Determine the current gear
         current_gear = None
 
-        for gear, ratio in enumerate(self.final_ratios, start=1):
+        for gear, ratio in enumerate(self.final_ratios, start=0):
 
             if (0.97 * ratio) < r_i < (1.03 * ratio):
                 current_gear = gear
