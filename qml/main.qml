@@ -1,5 +1,6 @@
 import QtQuick 2.15
 import QtQuick.Window
+import QtQuick.Layouts 1.3
 import QtQuick.Controls 2.15
 import QtQuick.Shapes 2.15
 import "components"
@@ -19,6 +20,7 @@ Window {
     property string currSpeed: "0"
     property string currRpm: "0"
     property string currGear: "7"
+    property string currFuelLevel: "25"
     property QtObject backend
 
     Item {
@@ -269,7 +271,7 @@ Window {
         x: 471
         y: 489
         color: "#ffffff"
-        text: qsTr("50")
+        text: currFuelLevel
         font.pixelSize: 40
         horizontalAlignment: Text.AlignHCenter
         font.family: "BMW Helvetica 75"
@@ -420,7 +422,7 @@ Window {
             y: 0
             width: 40
             height: 40
-            source: "components/assets/fuel-pump-inactive.svg"
+            source: currFuelLevel <= 15 ? "components/assets/fuel-pump(1).svg" : "components/assets/fuel-pump-inactive.svg"
             fillMode: Image.PreserveAspectFit
         }
 
@@ -474,6 +476,11 @@ Window {
         function onUpdatedGear(msg) {
             currGear = msg;
         }
+
+        function onUpdatedFuelLevel(msg) {
+            currFuelLevel = msg;
+        }
     }
 
 }
+

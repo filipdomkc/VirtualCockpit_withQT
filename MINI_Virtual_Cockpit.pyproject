@@ -1,5 +1,6 @@
 {
     "files": [
+        "SplashScreen.qml",
         "gearCalculator.py",
         "main.py",
         "qml/components/Driving_Mode_Graphic.qml",

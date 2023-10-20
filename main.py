@@ -15,6 +15,7 @@ class Backend(QObject):
     updatedSpeed = Signal(int, arguments=['speed'])
     updatedRpm = Signal(int, arguments=['rpm'])
     updatedGear = Signal(int, arguments=['gear'])
+    updatedFuelLevel = Signal(int, arguments=['fuel_level'])
 
     def __init__(self):
         super().__init__()
@@ -40,6 +41,7 @@ class Backend(QObject):
         self.timer.timeout.connect(self.update_speed)
         self.timer.timeout.connect(self.update_rpm)
         self.timer.timeout.connect(self.update_current_gear)
+        self.timer.timeout.connect(self.update_fuel_level)
         self.timer.start()
 
     def update_time(self):
@@ -71,6 +73,16 @@ class Backend(QObject):
         print(self.curr_gear)
         self.updatedGear.emit(self.curr_gear)
 
+    def update_fuel_level(self,fuel_level=None):
+        if fuel_level is None:
+            # Pass the current speed to QML.
+            self.curr_fuel_level = 26 #mock data
+        else:
+            self.curr_fuel_level = fuel_level #data coming from obd connection
+
+        self.updatedFuelLevel.emit(self.curr_fuel_level)
+
+
 if __name__ == "__main__":
     app = QGuiApplication(sys.argv)
     engine = QQmlApplicationEngine()
@@ -89,5 +101,6 @@ if __name__ == "__main__":
     backend.update_speed()
     backend.update_rpm()
     backend.update_current_gear()
+    backend.update_fuel_level()
 
     sys.exit(app.exec())
