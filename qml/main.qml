@@ -396,6 +396,66 @@ Window {
         font.styleName: "Bold"
     }
 
+    Row {
+        id: row
+        x: 426
+        y: 599
+        width: 400
+        height: 45
+        spacing: (row.width - (40 * 5)) / 4 // Calculate spacing
+
+        Image {
+            id: handbrake
+            x: 0
+            y: 0
+            width: 40
+            height: 40
+            source: "components/assets/hand-brake-inactive.svg"
+            fillMode: Image.PreserveAspectFit
+        }
+
+        Image {
+            id: fuelpump
+            x: 250
+            y: 0
+            width: 40
+            height: 40
+            source: "components/assets/fuel-pump-inactive.svg"
+            fillMode: Image.PreserveAspectFit
+        }
+
+        Image {
+            id: checkengine
+            x: 250
+            y: 0
+            width: 40
+            height: 40
+            source: "components/assets/engine-moto-inactive.svg"
+            fillMode: Image.PreserveAspectFit
+        }
+
+        Image {
+            id: coolanttemp
+            x: 250
+            y: 0
+            width: 40
+            height: 40
+            source: "components/assets/engine-coolant-inactive.svg"
+            fillMode: Image.PreserveAspectFit
+        }
+
+        Image {
+                    id: tirepressure
+                    x: 250
+                    y: 0
+                    width: 40
+                    height: 40
+                    source: "components/assets/tire-pressure-inactive.svg"
+                    fillMode: Image.PreserveAspectFit
+                }
+
+        }
+
     Connections {
         target: backend
 
