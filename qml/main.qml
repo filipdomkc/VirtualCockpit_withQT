@@ -6,6 +6,7 @@ import QtQuick.Shapes 2.15
 import "components"
 
 Window {
+    id: digital_cluster
     width: 1280
     height: 720
     maximumHeight : 720
@@ -157,7 +158,7 @@ Window {
 
     RPM_Gauge { x: 800;y: 158}
 
-    Speed_Gauge { x: 48;y: 157; currTime: currTime}
+    Speed_Gauge { x: 48;y: 157; backend: digital_cluster.backend}
 
     Rectangle {
         anchors.fill: parent
@@ -283,7 +284,7 @@ Window {
         x: 573
         y: 489
         color: "#ffffff"
-        text: qsTr("425")
+        text: currFuelLevel/100*800
         font.pixelSize: 40
         horizontalAlignment: Text.AlignHCenter
         font.family: "BMW Helvetica 75"
@@ -447,14 +448,14 @@ Window {
         }
 
         Image {
-                    id: tirepressure
-                    x: 250
-                    y: 0
-                    width: 40
-                    height: 40
-                    source: "components/assets/tire-pressure-inactive.svg"
-                    fillMode: Image.PreserveAspectFit
-                }
+                id: tirepressure
+                x: 250
+                y: 0
+                width: 40
+                height: 40
+                source: "components/assets/tire-pressure-inactive.svg"
+                fillMode: Image.PreserveAspectFit
+            }
 
         }
 

@@ -52,7 +52,7 @@ class Backend(QObject):
     def update_speed(self,speed=None):
         if speed is None:
             # Pass the current speed to QML.
-            self.curr_speed = random.randint(0, 240) #mock data
+            self.curr_speed = random.randint(0,240)
         else:
             self.curr_speed = speed #data coming from obd connection
 
