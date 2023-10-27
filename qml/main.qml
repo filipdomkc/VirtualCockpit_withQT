@@ -719,6 +719,51 @@ Window {
         }
     }
 
+    Rectangle {
+        id: welcome
+        width: 1280
+        height: 720
+        color: "black"
+
+        Image {
+            id: jCW_old_logo
+            x: 384
+            y: 314
+            width: 513
+            height: 93
+            source: "components/assets/JCW_old_logo.svg"
+            fillMode: Image.PreserveAspectFit
+
+            // Opacity animation
+            NumberAnimation {
+                id: opacityAnimation
+                target: jCW_old_logo
+                property: "opacity"
+                from: 0
+                to: 1
+                duration: 2000 // 2 seconds
+                easing.type: Easing.InQuad // Ease In
+            }
+
+            // Trigger the animation immediately when the component is completed
+            Component.onCompleted: {
+                opacityAnimation.start()
+            }
+        }
+
+    Timer {
+        id: visibilityWelcomeTimer
+        interval: 3500 // 5000 milliseconds (5 seconds)
+        running: true
+        onTriggered: {
+            // Set the visibility of the element to 0 when the timer triggers
+            welcome.visible = false;
+        }
+    }
+
+
+    }
+
     Connections {
         target: backend
 

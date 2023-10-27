@@ -5,7 +5,7 @@ import random
 from pathlib import Path
 from time import strftime, localtime
 from gearCalculator import gearCalculator
-from PySide6.QtGui import QGuiApplication
+from PySide6.QtGui import QGuiApplication, QIcon
 from PySide6.QtQml import QQmlApplicationEngine
 from PySide6.QtCore import QTimer, QObject, Signal
 
@@ -84,6 +84,10 @@ class Backend(QObject):
 
 if __name__ == "__main__":
     app = QGuiApplication(sys.argv)
+    # Set the application icon
+    icon = QIcon("qml/components/assets/speedometer.png")
+    app.setWindowIcon(icon)
+
     engine = QQmlApplicationEngine()
     engine.quit.connect(app.quit)
     qml_file = Path(__file__).resolve().parent / "qml/main.qml"
