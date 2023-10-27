@@ -6,6 +6,7 @@ Item {
     height: 404
 
     property int rpmValue: 0
+    property string bmwfont: "BMW Helvetica 75"
 
     Text {
         id: rpm1
@@ -32,7 +33,7 @@ Item {
         font.pixelSize: 25
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
-        font.family: "BMW Helvetica 75"
+        font.family: bmwfont
     }
 
     Text {
@@ -46,7 +47,7 @@ Item {
         font.pixelSize: 25
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
-        font.family: "BMW Helvetica 75"
+        font.family: bmwfont
     }
 
     Text {
@@ -60,7 +61,7 @@ Item {
         font.pixelSize: 25
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
-        font.family: "BMW Helvetica 75"
+        font.family: bmwfont
     }
 
     Text {
@@ -74,7 +75,7 @@ Item {
         font.pixelSize: 25
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
-        font.family: "BMW Helvetica 75"
+        font.family: bmwfont
     }
 
     Text {
@@ -88,7 +89,7 @@ Item {
         font.pixelSize: 25
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
-        font.family: "BMW Helvetica 75"
+        font.family: bmwfont
     }
 
     Text {
@@ -102,7 +103,7 @@ Item {
         font.pixelSize: 25
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
-        font.family: "BMW Helvetica 75"
+        font.family: bmwfont
     }
 
     Text {
@@ -116,7 +117,7 @@ Item {
         font.pixelSize: 25
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
-        font.family: "BMW Helvetica 75"
+        font.family: bmwfont
     }
 
     Text {
@@ -130,7 +131,7 @@ Item {
         font.pixelSize: 25
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
-        font.family: "BMW Helvetica 75"
+        font.family: bmwfont
     }
 
     Text {
@@ -144,7 +145,7 @@ Item {
         font.pixelSize: 25
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
-        font.family: "BMW Helvetica 75"
+        font.family: bmwfont
     }
 
 }

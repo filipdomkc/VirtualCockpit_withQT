@@ -6,6 +6,7 @@ Item {
     width: 457
     height: 407
 
+    property string bmwfont: "BMW Helvetica 75"
     property var backend: undefined
 
     function calculateFontSize(speed) {
@@ -30,7 +31,7 @@ Item {
         font.pixelSize: 24
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
-        font.family: "BMW Helvetica 75"
+        font.family: bmwfont
     }
 
     Text {
@@ -58,7 +59,7 @@ Item {
         font.pixelSize: calculateFontSize(30)
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
-        font.family: "BMW Helvetica 75"
+        font.family: bmwfont
     }
 
     Text {
@@ -72,7 +73,7 @@ Item {
         font.pixelSize: calculateFontSize(60)
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
-        font.family: "BMW Helvetica 75"
+        font.family: bmwfont
     }
 
     Text {
@@ -86,7 +87,7 @@ Item {
         font.pixelSize: calculateFontSize(90)
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
-        font.family: "BMW Helvetica 75"
+        font.family: bmwfont
     }
 
     Text {
@@ -100,7 +101,7 @@ Item {
         font.pixelSize: calculateFontSize(120)
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
-        font.family: "BMW Helvetica 75"
+        font.family: bmwfont
     }
 
     Text {
@@ -114,7 +115,7 @@ Item {
         font.pixelSize: calculateFontSize(150)
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
-        font.family: "BMW Helvetica 75"
+        font.family: bmwfont
     }
 
     Text {
@@ -128,7 +129,7 @@ Item {
         font.pixelSize: calculateFontSize(180)
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
-        font.family: "BMW Helvetica 75"
+        font.family: bmwfont
     }
 
     Text {
@@ -142,7 +143,7 @@ Item {
         font.pixelSize: calculateFontSize(210)
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
-        font.family: "BMW Helvetica 75"
+        font.family: bmwfont
     }
 
     Text {
@@ -156,6 +157,6 @@ Item {
         font.pixelSize: calculateFontSize(240)
         horizontalAlignment: Text.AlignHCenter
         font.styleName: "Bold"
-        font.family: "BMW Helvetica 75"
+        font.family: bmwfont
     }
 }

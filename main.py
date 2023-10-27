@@ -70,7 +70,6 @@ class Backend(QObject):
     def update_current_gear(self):
         self.gear.update_speed_rpm(self.curr_speed, self.curr_rpm)
         self.curr_gear = self.gear.calculate_current_gear()
-        print(self.curr_gear)
         self.updatedGear.emit(self.curr_gear)
 
     def update_fuel_level(self,fuel_level=None):
