@@ -672,7 +672,7 @@ Window {
                      anchors.verticalCenter: rd.verticalCenter
                      radius: 13
                      color: "black"
-                     border.color: "red"
+                     border.color: mercedes_amg.visible ? "yellow" : "red"
 
                      Rectangle {
                          width: 8
@@ -680,7 +680,7 @@ Window {
                          x: 3.5
                          y: 3.5
                          radius: 4
-                         color:  "red"
+                         color:  mercedes_amg.visible ? "yellow" : "red"
                          visible: rd.checked
                      }
                  }
@@ -689,7 +689,7 @@ Window {
                      text: rd.text
                      font: rd.font
                      opacity: enabled ? 1.0 : 0.3
-                     color:  "red"
+                     color:  mercedes_amg.visible ? "yellow" : "red"
                      verticalAlignment: Text.AlignVCenter
                      leftPadding: rd.indicator.width + rd.spacing
                  }
